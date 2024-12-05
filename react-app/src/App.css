@@ -1,5 +1,5 @@
 body{
-  background-color: #64b4f686;
+  background-color: #729B79;
 }
 
 .button{
@@ -7,7 +7,7 @@ body{
   height: 79px;
   border: 1px solid #3A3A4A;
   border-radius: 12px;
-  background-color: #64B5F6;
+  background-color: #26413c;
   color: #EAEAEA;
   font-size: 25px;
 
@@ -15,5 +15,5 @@ body{
 }
 
 .button:hover{
-  background-color: #64b4f686;
+  background-color: #03120E;
 }
