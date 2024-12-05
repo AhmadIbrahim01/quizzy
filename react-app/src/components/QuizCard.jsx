@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import Button from "./Button";
+import "./QuizCard.css"
+import "../styles/base/base.css"
+import "../styles/base/utilities.css"
 
 const QuizCard = ({questions}) => {
 
@@ -24,7 +27,7 @@ const QuizCard = ({questions}) => {
 
 
     const handleAnswer = (e)=>{
-        if(!lock && e.target.innerText.slice(2) == q.correctAnswer){
+        if(!lock && e.target.innerText == q.correctAnswer){
             setScore((prev)=>prev + 1)
         }
         console.log(score)
@@ -35,12 +38,12 @@ const QuizCard = ({questions}) => {
     return(
         <>
             {result ? <div>My score: {score}</div>: 
-            <>   
-                <h1>{q.id}.{q.question}</h1>
-                <ul>
+            <div className="flex column center card">   
+                <h2>{q.id}.{q.question}</h2>
+                <ul className="flex column center">
                     {q.answers.map((q, index)=>(
-                        <li key={index} onClick={handleAnswer}>
-                            {(index+1) + " " + q}
+                        <li className="flex" key={index} onClick={handleAnswer}>
+                            {q}
                         </li>
                     ))}
                 </ul>
@@ -49,7 +52,7 @@ const QuizCard = ({questions}) => {
                 <p>
                     {questionNumber + 1} / {length}
                 </p>
-            </>     
+            </div>     
             }
         </>
     )
