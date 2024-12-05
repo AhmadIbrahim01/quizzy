@@ -14,7 +14,6 @@ const QuizCard = ({questions}) => {
     const [lock, setLock] = useState(false)
 
 
-
     const next = () =>{
         if (lock && questionNumber + 1 < length){
             setQuestionNumber(questionNumber+1)
@@ -30,8 +29,10 @@ const QuizCard = ({questions}) => {
         if(!lock && e.target.innerText == q.correctAnswer){
             setScore((prev)=>prev + 1)
         }
+        e.target.classList.toggle(e.target.innerText == q.correctAnswer?'correct':'wrong')
         console.log(score)
         setLock(true)
+
     }
 
 

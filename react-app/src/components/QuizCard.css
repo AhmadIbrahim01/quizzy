@@ -49,3 +49,10 @@ li{
     margin: 1%;
     cursor: pointer;
 }
+
+.correct{
+    background-color: lightgreen;
+}
+.wrong{
+    background-color: lightcoral;
+}
