@@ -21,8 +21,6 @@ const Quiz = ()=>{
 
     return(
         <>
-            <h1>Quiz Page</h1>
-            {/* <p>{(data === "general" ? console.log("hello") : (data === "sports" ? console.log("hello 2") : console.log("hello 3")))}</p> */}
             {path}
         </>
     );
