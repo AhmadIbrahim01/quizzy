@@ -31,7 +31,7 @@ const Register = ()=>{
         try {
             const response = await axios.post("http://127.0.0.1:8080/auth/register", formData, {
                 headers: {
-                    "Content-Type": "application/x-www-form-urlencoded"
+                    "Content-Type": "application/json"  // Change this
                 },
             });
 

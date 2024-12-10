@@ -14,7 +14,7 @@ function App() {
             <Router>
                 <Routes>
                     <Route
-                        path="/"
+                        path="/home"
                         element={<Home />}
 					>
                     </Route>
@@ -29,7 +29,7 @@ function App() {
 					>
                     </Route>
                     <Route
-                        path="/register"
+                        path="/"
                         element={<Register />}
 					>
                     </Route>

@@ -28,35 +28,35 @@ const Login = ()=>{
         console.log(formData);
     }, [formData]); 
 
-    const onSubmitHandler = async(e)=>{
-
+    const onSubmitHandler = async (e) => {
         e.preventDefault();
-
+    
         try {
             const response = await axios.post("http://127.0.0.1:8080/auth/login", formData, {
                 headers: {
                     "Content-Type": "application/json",
                 },
-            })
-
-            console.log("hello");
-            
-
-            setStatus({
-                success: true,
-                message: "Successfull Login",
             });
 
-            navigate("/")
+            
+            const { token } = response.data;
+            localStorage.setItem("authToken", token);
+            
+            setStatus({
+                success: true,
+                message: "Successfully logged in",
+            });
+            
+            navigate("/home");
         } catch (error) {
+            console.log(error.response)
             setStatus({
                 success: false,
-                message: "Invalid Credintials",
-            })
+                message: "Invalid Credentials",
+            });
         }
-        console.log(status)
-
     }
+    
 
     return(
         <div className="flex login">
@@ -66,6 +66,8 @@ const Login = ()=>{
                     <Input placeholder={"Username"} type={"text"} name={"username"} value={formData.username} onChange={handleChange}></Input>
                     <Input placeholder={"Password"} type={"password"} name={"password"} value={formData.password} onChange={handleChange}></Input>
                     <Button type={"submit"} onClick={onSubmitHandler}>Login</Button>
+
+                    {status && <h2 style={{color:"red"}}>{status.message}</h2>}
                 </form>
             </div>
         </div>
