@@ -1,6 +1,6 @@
 import express from "express";
-import authRoutes from "auth.routes.js";
-import connectToDatabase from "./db/connection";
+import authRoutes from "./routes/auth.routes.js";
+import connectToDatabase from "./db/connection.js";
 
 
 const app = express();
