@@ -1,3 +1,6 @@
+import jwt from "jsonwebtoken";
+import { User } from "../models/user.model.js";
+
 export const authMiddleware = async (req, res, next) => {
     const authHeaders = req.headers.authorization;
 
@@ -18,6 +21,14 @@ export const authMiddleware = async (req, res, next) => {
     const token = splitted[1]
 
     try {
+        const payload = await jwt.verify(token, "secret");
+
+        const id = payload.userId
+
+        const user = await User.findById(id);
+
+        req.user = user;
+
         next()
     } catch (error) {
         console.log(error);
