@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Input from "../components/Input"
 import Button from "../components/Button"
+import axios from "axios";
 
 
 const Login = ()=>{
@@ -32,7 +33,7 @@ const Login = ()=>{
         e.preventDefault();
 
         try {
-            const response = await axios.post("", formData, {
+            const response = await axios.post("http://127.0.0.1:8080/auth/login", formData, {
                 headers: {
                     "Content-Type": "application/json",
                 },
