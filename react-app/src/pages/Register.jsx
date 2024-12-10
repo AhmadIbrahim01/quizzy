@@ -29,7 +29,7 @@ const Register = ()=>{
         e.preventDefault();
 
         try {
-            const response = await axios.post("", formData, {
+            const response = await axios.post("http://127.0.0.1:8080/auth/register", formData, {
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded"
                 },
