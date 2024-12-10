@@ -38,6 +38,38 @@ export const register = async (req, res) =>{
 }
 
 
-export const login = (req, res) =>{
+export const login = async (req, res) =>{
+    const {username, password} = req.body;
 
+    try {
+        
+        const user = await User.findOne({
+            username
+        });
+        
+        
+        if(!user){
+            return res.status(404).send({
+                message: "Invalid Credentials"
+            })
+        }
+
+        const check = await bcrypt.compare(password, user.password);
+
+        if(!check){
+            return res.status(400).send({
+                message: "Invalid Credentials"
+            })
+        }
+
+        return res.status(201).send({
+            user
+        })
+    } catch (error) {
+        console.log(error.message);
+
+        return res.status(500).send({
+            message: "Error Happened",
+        });
+    };
 }
