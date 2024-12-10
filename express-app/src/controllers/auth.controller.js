@@ -12,15 +12,17 @@ export const register = async (req, res) =>{
         };
 
         const salt = await bcrypt.genSalt(10);
-        const hashed = await bcrypt.hash(password, 10);
-
-        const user = User.create({
+        const hashed = await bcrypt.hash(password, salt);
+        
+        const user = await User.create({
             username,
-            password:hashed,
+            password: hashed,
             name,
         })
 
-        return res.send(user);
+        return res.status(201).send({
+            user
+        });
 
 
     } catch (error) {
