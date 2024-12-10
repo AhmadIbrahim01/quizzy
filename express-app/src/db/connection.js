@@ -4,7 +4,7 @@ const connectToDatabase = async ()=>{
 
     try {
         
-        await connect("mongodb://localhost:27017/");
+        await connect("mongodb://localhost:27017/quizzy");
 
         console.log("connected to database")
 
